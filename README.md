@@ -30,10 +30,10 @@
 
 Arduino Pins|	Description
 ------------|--------------
-A0, A2 |	Available ARDUINO analog GPIO / DIGITAL GPIO
+A0, A2 |	Available ARDUINO analog GPIO / DIGITAL GPIO 
 A1 |	connected to ACS712 current sensor
 A3 |	connected to  ATSHA204A
-_D3, D4, D5, D7_|	Available ARDUINO digital GPIO
+D5 |	Available ARDUINO digital GPIO
 D6 |	connected to Pixel LED SK6812mini
 D8 |	Connected to CS FLASH chip (OTA) M25P40
 D9 |	connected to RFM69 reset pin
