@@ -2,23 +2,25 @@
 
 ![enter image description here](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/bttnsz.jpg?raw=true)
 
-# The Button Size Node is a low cost wireless Arduino IDE compatible (the Atmel ATMega328P) microcontroller with RFM 69 HW(CW) radio on board and few other nice additions. Best sutable for Home Automation, IOT. Could be used as core board for radio controlling any DIY project. Check Specs below. It replaces this setup:
+# The Mini Relay Box  is a low cost wireless 220 Volts 10A Relay board. It can switch on-off 220 Volts wirelessly. Arduino IDE compatible (the Atmel ATMega328P) microcontroller with RFM 69 HW radio on board.  Onboard 220 Volts power supply. Best suitable for Home Automation, IOT. Current sensor can report power consumption. Check Specs below. It can replace this setup:
 
 ![](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/replce.jpg?raw=true)
 
 ## Specification: ##
- - Dimensions 42.2mm x 20.9mm
- - Temperature and humidity sensor Si7021 
- - High Accuracy Temperature Sensor ±0.4 °C (max), –10 to 85 °C
- - Precision Relative Humidity Sensor ± 3% RH (max), 0–80% RH
- - Light sensor BH1750,  spectral responsibility is approximately human eye response.
+ - Dimensions _42.2mm x 20.9mm_
+
  - Authentication security - Atmel ATSHA204A Crypto Authentication Chip
  - External JDEC EPROM
- - RFM69-HW (high power version) or CW (low power consumption version) 433 MHz Radio transceiver
- - Battery voltage sensor (via divider)
- - Supply voltage up to 6.5 Volts
+ - RFM69-HW (high power version) 433 MHz Radio transceiver
+ - ACS-712 current sensor. Range from 0,1 A up to 10 amperes.
+ - Pixel LED SK6812mini
+ - Supply voltage 160-240 Volts AC
  - The Digital and Analog pins are 3.3 volts
- - Battery connector CR2032 240mAh
+ - Uncompromised Protection:
+	Overload varistor
+	Slow fuse 
+	Thermal fuse
+ - FTDI  header for programming
 
 
 **Pin out:** 
@@ -31,8 +33,9 @@ A6 |	Connected to Battery voltage sensor (via divider)
 A4 |	Connected to si1132 and bh1750 SDA 
 A5 |	Connected to si1132 and bh1750 SCL
 A3 |	Connected to  ATSHA204A
-D3, D4, D5, D6,D7, D9 |	Available ARDUINO digital GPIO
+D3, D4, D5, D6,D7 |	Available ARDUINO digital GPIO
 D8 |	Connected to CS FLASH chip (OTA) M25P40
+D9 |	connected to RFM69 reset pin
 MISO, MOSI, SCK, RST |	Connected to ISP header
 ANT |	RFM69 antenna
 Bat+ | Unregulated power up to 6.5 Volts
