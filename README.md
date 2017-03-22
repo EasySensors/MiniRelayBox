@@ -47,12 +47,12 @@ How to use it as home automation (IOT) node controller
 ------------------------------------------------------
 
 
-ButtonSizeNode.ino is the Arduino example sketch using [MySensors](https://www.mysensors.org/) API. 
+miniRelayBox.ino is the Arduino example sketch using [MySensors](https://www.mysensors.org/) API. 
 
-Burn the ButtonSizeNode.ino sketch into it an it will became  one of the MySensors home automation network Node. 
+Burn the miniRelayBox.ino sketch into it an it will became  one of the MySensors home automation network Node. 
 To create the network you need controller and at least two Nodes one as a Sensor, relay or actuator Node and the other one as “Gateway Serial”. I personally love [Domoticz](https://domoticz.com/) as conroller. Please check this [HowTo](https://github.com/EasySensors/ButtonSizeNode/blob/master/DomoticzInstallMySensors.md) to install Domoticz.
 
-However, for no-controller setup, as example, you can use 3 nodes - first node as “Gateway Serial”, second node as relay and lastone as switch for that relay. No controller needed then, keep the switch and the relay on the same address and the switch will operate the relay.
+However, for no-controller setup, as example, you can use 3 nodes - first node as “Gateway Serial”, second node as the Mini Relay Box node and lastone as switch for the relay node. No controller needed then, keep the switch and the relay node on the same address and the switch will operate the relay node.
 
 Things worth mentioning about the  [MySensors](https://www.mysensors.org/) Arduino sketch: 
 
@@ -64,7 +64,7 @@ Arduino Pins|	Description
 #define MY_OTA_FIRMWARE_FEATURE<br>#define MY_OTA_FLASH_JDECID 0x2020 | Define OTA feature. OTA stands for “Over The Air firmware updates”.<br> If your node does not utilize Sleep mode you can send new “firmware”<br> (compiled sketch binary) by air. **Here is the link on how to do it.** <br>For OTA we use JDEC Flash chip where the node stores<br> new firmware and once it received and controlsum (CRC) is correct<br>  it reboots and flashes your new code into the node<br> controller. So we define it is "erase type" as 0x2020 here. 
 #define MY_SIGNING_ATSHA204 | Define if you like to use Crypto Authentication to secure your nodes<br> from intruders or interference. After that, you have to “personalize”<br> all the nodes, which have those, defines enabled.<br> [**How to “personalize” nodes with encryption key**](https://github.com/EasySensors/ButtonSizeNode/blob/master/SecurityPersonalizationHowTo.md)
 
-Connect the Node to FTDI USB adaptor, Select Pro Mini 8MHz board and burn the ButtonSizeNode.ino sketch.
+Connect the Relay to FTDI USB adaptor, Select Pro Mini 8MHz board and burn the ButtonSizeNode.ino sketch.
 
 **Done**
 
