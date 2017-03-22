@@ -16,10 +16,10 @@
  - Pixel LED SK6812mini
  - Supply voltage 160-240 Volts AC
  - The Digital and Analog pins are 3.3 volts
- - Uncompromised Protection:
-	Overload varistor
-	Slow fuse 
-	Thermal fuse
+ - Uncompromised Protection:<br>
+	Overload varistor<br>
+	Slow fuse<br>
+	Thermal fuse<br>
  - Plastic Enclosure Dimensions 40x45x20mm
  - Board Dimensions 36x38x18mm
  - FTDI  header for programming
