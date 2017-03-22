@@ -29,8 +29,8 @@
 Arduino Pins|	Description
 ------------|--------------
 A0, A2 |	Available ARDUINO analog GPIO / DIGITAL GPIO
-A1 |	Connected to ACS712 current sensor
-A3 |	Connected to  ATSHA204A
+A1 |	connected to ACS712 current sensor
+A3 |	connected to  ATSHA204A
 _D3, D4, D5, D7_|	Available ARDUINO digital GPIO
 D6 |	connected to Pixel LED SK6812mini
 D8 |	Connected to CS FLASH chip (OTA) M25P40
@@ -71,6 +71,6 @@ Connect the Relay to FTDI USB adaptor, Select Pro Mini 8MHz board and burn the B
 
 >For schematics lovers:
 
-![enter image description here](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/schematic.jpg?raw=true)
+![enter image description here](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/schematic.jpg?raw=true)
 
 The board is created by  [Koresh](https://www.openhardware.io/user/143/projects/Koresh)
