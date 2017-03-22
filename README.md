@@ -20,6 +20,7 @@
 	Overload varistor
 	Slow fuse 
 	Thermal fuse
+ - _Dimensions_
  - FTDI  header for programming
 
 
@@ -33,7 +34,7 @@ A6 |	Connected to Battery voltage sensor (via divider)
 A4 |	Connected to si1132 and bh1750 SDA 
 A5 |	Connected to si1132 and bh1750 SCL
 A3 |	Connected to  ATSHA204A
-D3, D4, D5, D6,D7 |	Available ARDUINO digital GPIO
+_D3, D4, D5, D6,D7_|	Available ARDUINO digital GPIO
 D8 |	Connected to CS FLASH chip (OTA) M25P40
 D9 |	connected to RFM69 reset pin
 MISO, MOSI, SCK, RST |	Connected to ISP header
