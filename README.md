@@ -29,7 +29,8 @@
 
 Arduino Pins|	Description
 ------------|--------------
-A0, A1, A2 |	Available ARDUINO analog GPIO / DIGITAL GPIO
+A0, A2 |	Available ARDUINO analog GPIO / DIGITAL GPIO
+A1 |	Connected to ACS712 current sensor
 A3 |	Connected to  ATSHA204A
 _D3, D4, D5, D6,D7_|	Available ARDUINO digital GPIO
 D8 |	Connected to CS FLASH chip (OTA) M25P40
