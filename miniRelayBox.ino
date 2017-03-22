@@ -1,9 +1,9 @@
 // Enable debug prints to serial monitor
-#define MY_DEBUG
+//#define MY_DEBUG
 
 //#include <MemoryFree.h>
 
-//#define AdafruitNeoPixel 
+#define AdafruitNeoPixel 
 
 
 #ifdef  AdafruitNeoPixel
@@ -150,8 +150,7 @@ void amps()
 void before() {
     wdt_enable(WDTO_8S);
     //wdt_disable();
-    pinMode(A4, OUTPUT);  
-    digitalWrite(A4,0);
+
     //RFM69 reset pin connected to digital pin 9
     pinMode(9, OUTPUT);  
     digitalWrite(9,LOW);
@@ -162,11 +161,12 @@ void before() {
     delay(10);
     digitalWrite(9,LOW);
     delay(10);
+    */
     // external button
     pinMode(A2, INPUT_PULLUP);
     // external button
     digitalWrite(A2,HIGH);  
-    */
+    
     
     #ifdef  AdafruitNeoPixel
       pixels.begin(); // This initializes the NeoPixel library.
@@ -218,10 +218,11 @@ void loop()
   boolean loadedState;
   wdt_reset();
   //if (_radio.readRSSI() < CSMA_LIMIT){Serial.print(" canSend():"); Serial.println(_radio.readRSSI());}
-  Serial.print("RSSI "); Serial.println(_radio.readRSSI());
+  //Serial.print("RSSI "); Serial.println(_radio.readRSSI());
   
   #ifdef TACT_SWITCH
         value_ext_sw = digitalRead(A2);
+        Serial.print("digitalRead(A2) "); Serial.println(digitalRead(A2));
         if (value_ext_sw == 0 && last_value_ext_sw == 1){ 
           loadedState = loadState(RELAY_sensor) == 1? true:false;
 /*          if ( loadedState == 255){
