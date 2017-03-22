@@ -7,8 +7,6 @@
 ![](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/replce.jpg?raw=true)
 
 ## Specification: ##
- - Dimensions _42.2mm x 20.9mm_
-
  - Authentication security - Atmel ATSHA204A Crypto Authentication Chip
  - External JDEC EPROM
  - RFM69-HW (high power version) 433 MHz Radio transceiver
@@ -20,7 +18,8 @@
 	Overload varistor
 	Slow fuse 
 	Thermal fuse
- - _Dimensions_
+ - Plastic Enclosure
+ - Board _Dimensions_
  - FTDI  header for programming
 
 
