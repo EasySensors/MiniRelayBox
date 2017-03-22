@@ -32,7 +32,7 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ80
 
 #define MY_IS_RFM69HW
 
-#define MY_NODE_ID 200
+#define MY_NODE_ID 100
 //0xC9
 //0xF3
 
@@ -171,6 +171,7 @@ void before() {
     #ifdef  AdafruitNeoPixel
       pixels.begin(); // This initializes the NeoPixel library.
       pixels.setPixelColor(0,pixels.Color(0,0,255));
+      pixels.setBrightness(50);
       pixels.show();
     #endif
     
