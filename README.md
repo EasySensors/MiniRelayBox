@@ -4,7 +4,7 @@
 
 # The Mini Relay Box  is a low cost wireless 220 Volts 10A Relay board. It can switch on-off 220 Volts wirelessly. Arduino IDE compatible (the Atmel ATMega328P) microcontroller with RFM 69 HW radio on board.  Onboard 220 Volts power supply. Best suitable for Home Automation, IOT. Current sensor can report power consumption. Check Specs below. It can replace this setup:
 
-![](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/replce.jpg?raw=true)
+![](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/replce.jpg?raw=true)
 
 ## Specification: ##
  - Authentication security - Atmel ATSHA204A Crypto Authentication Chip
