@@ -46,7 +46,7 @@ ANT |	RFM69 antenna
 
 
 
-How to use it as home automation (IOT) node controller
+How to use it as home automation (IOT) node Relay
 ------------------------------------------------------
 
 
