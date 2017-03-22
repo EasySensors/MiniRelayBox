@@ -52,8 +52,8 @@ How to use it as home automation (IOT) node controller
 
 miniRelayBox.ino is the Arduino example sketch using [MySensors](https://www.mysensors.org/) API. 
 
-Burn the miniRelayBox.ino sketch into it an it will became  one of the MySensors home automation network Node. 
-To create Home Automation Network you need controller and at least two Nodes one as a Sensor, relay or actuator Node and the other one as “Gateway Serial”. I personally love [Domoticz](https://domoticz.com/) as conroller. Please check this [HowTo](https://github.com/EasySensors/ButtonSizeNode/blob/master/DomoticzInstallMySensors.md) to install Domoticz.
+Burn the miniRelayBox.ino sketch into it an it will became  one of the MySensors home automation network Relay Node. The Relay could be controlable from a smarthome controller web interface or smarphone App. 
+To create Home Automation Network you need controller and at least two Nodes one as a Sensor, relay or actuator Node and the other one as “Gateway Serial” connected to the smarthome controller. I personally love [Domoticz](https://domoticz.com/) as smarthome conroller. Please check this [HowTo](https://github.com/EasySensors/ButtonSizeNode/blob/master/DomoticzInstallMySensors.md) to install Domoticz.
 
 However, for no-controller setup, as example, you can use 3 nodes - first node as “Gateway Serial”, second node as the Mini Relay Box node and lastone as switch for the relay node. No controller needed then, keep the switch and the relay node on the same address and the switch will operate the relay node.
 
