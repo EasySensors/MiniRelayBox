@@ -20,8 +20,8 @@
 	Overload varistor
 	Slow fuse 
 	Thermal fuse
- - Plastic Enclosure
- - Board _Dimensions_
+ - Plastic Enclosure Dimensions 40x45x20mm
+ - Board Dimensions 36x38x18mm
  - FTDI  header for programming
 
 
