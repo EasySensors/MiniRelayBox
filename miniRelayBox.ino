@@ -39,7 +39,6 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ80
 #define MY_OTA_FIRMWARE_FEATURE
 #define MY_OTA_FLASH_JDECID 0x2020
 //#define11 MY_OTA_FLASH_JDECID 0x1C30
-//#define SPIFLASH_BLOCKERASE_32K   0xD8
 
 #define MY_SIGNING_ATSHA204
 #define  MY_SIGNING_REQUEST_SIGNATURES
@@ -170,8 +169,8 @@ void before() {
     
     #ifdef  AdafruitNeoPixel
       pixels.begin(); // This initializes the NeoPixel library.
-      pixels.setPixelColor(0,pixels.Color(0,0,255));
-      pixels.setBrightness(50);
+      pixels.setPixelColor(0,pixels.Color(0,0,255)); // R G B 
+      pixels.setBrightness(50); //0-255
       pixels.show();
     #endif
     
@@ -193,7 +192,7 @@ void before() {
     //SPIFlash _flash(MY_OTA_FLASH_SS, MY_OTA_FLASH_JDECID);
     //Serial.println(_flash.readDeviceId());
     //Serial.println("reboot!!!!!");
-    _radio.readAllRegs();
+    //_radio.readAllRegs();
 }
 
 void setup() {
@@ -223,7 +222,6 @@ void loop()
   
   #ifdef TACT_SWITCH
         value_ext_sw = digitalRead(A2);
-        Serial.print("digitalRead(A2) "); Serial.println(digitalRead(A2));
         if (value_ext_sw == 0 && last_value_ext_sw == 1){ 
           loadedState = loadState(RELAY_sensor) == 1? true:false;
 /*          if ( loadedState == 255){
