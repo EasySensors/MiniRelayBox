@@ -11,6 +11,7 @@
  - External JDEC EPROM
  - RFM69-HW (high power version) 433 MHz Radio transceiver
  - ACS-712 current sensor. Range from 0,1 A up to 10 amperes.
+ - External JDEC EPROM
  - Pixel LED SK6812mini
  - Supply voltage 160-240 Volts AC
  - The Digital and Analog pins are 3.3 volts
