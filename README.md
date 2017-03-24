@@ -35,6 +35,7 @@ A1 |	connected to ACS712 current sensor
 A3 |	connected to  ATSHA204A
 D5 |	Available ARDUINO digital GPIO
 D6 |	connected to Pixel LED SK6812mini
+D7 |	connected to the 10A Relay
 D8 |	Connected to CS FLASH chip (OTA) M25P40
 D9 |	connected to RFM69 reset pin
 ANT |	RFM69 antenna
