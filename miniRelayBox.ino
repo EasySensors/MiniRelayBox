@@ -1,6 +1,10 @@
 // Enable debug prints to serial monitor
 //#define MY_DEBUG
 
+#define MY_NODE_ID 0xF0
+//0xC9
+//0xF3
+
 //#include <MemoryFree.h>
 
 #define AdafruitNeoPixel 
@@ -32,9 +36,6 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ80
 
 #define MY_IS_RFM69HW
 
-#define MY_NODE_ID 100
-//0xC9
-//0xF3
 
 #define MY_OTA_FIRMWARE_FEATURE
 #define MY_OTA_FLASH_JDECID 0x2020
@@ -175,7 +176,7 @@ void before() {
     #endif
     
     // Call void amps() to update current and temperature readings.
-    timer.setInterval(60000, amps);
+    timer.setInterval(6000, amps);
     inputStats.setWindowSecs( windowLength );
     // Then set relay pins in output mode
     pinMode(RELAY_pin, OUTPUT);  
