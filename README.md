@@ -86,8 +86,7 @@ The board is created by  [Koresh](https://www.openhardware.io/user/143/projects/
 ![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/r3.jpg?raw=true)
 ![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/r4.jpg?raw=true)
 
->[The board schematics Pdf link]
-(https://github.com/EasySensors/MiniRelayBox/blob/master/pdf/WallInsertableSocket_sch.pdf)
+>[The board schematics Pdf link](https://github.com/EasySensors/MiniRelayBox/blob/master/pdf/WallInsertableSocket_sch.pdf)
 
 P.S.
 Always mind! if your Arduino code fails you need some backup plan. Put some candles and matches in your bathroom )))))... hope you understand.  Start your automation wisely. Like auotomate your doghouse first. Then checkenshed and so on!!!
