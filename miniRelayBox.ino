@@ -1,10 +1,10 @@
 // Enable debug prints to serial monitor
-//#define MY_DEBUG
+#define MY_DEBUG
 
 #define MY_NODE_ID 100
 //0xF0
 
-#define AdafruitNeoPixel 
+//#define AdafruitNeoPixel 
 
 #ifdef  AdafruitNeoPixel
 #include <Adafruit_NeoPixel.h>
@@ -32,8 +32,8 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ80
 #define MY_OTA_FIRMWARE_FEATURE
 #define MY_OTA_FLASH_JDECID 0x2020
 
-#define MY_SIGNING_ATSHA204
-#define  MY_SIGNING_REQUEST_SIGNATURES
+//#define MY_SIGNING_ATSHA204
+//#define  MY_SIGNING_REQUEST_SIGNATURES
 
 #include <MySensors.h>
 #include <SimpleTimer.h>
@@ -167,20 +167,14 @@ void receive(const MyMessage &message) {
      saveState(message.sensor, message.getBool()?RELAY_ON:RELAY_OFF);
      #ifdef  AdafruitNeoPixel
       wait(100);
-      noInterrupts();
-      // Blink Blues light to see some message recevied
+      // Blink Blues light to see radio communication with the gateway is 
       pixels.setPixelColor(0,pixels.Color(0,0,255));
       pixels.show();
-      interrupts();
       wait(100);
-      noInterrupts();
       // Set Red for ON and green fo OFF
       pixels.setPixelColor(0,message.getBool() ?pixels.Color(255,0,0):pixels.Color(0,255,0));
       pixels.show();
-      interrupts();
      #endif
-     // Write some debug info
-     //Serial.print(message.getBool()?pixels.Color(255,0,0):pixels.Color(0,255,0),HEX);
      Serial.print("Incoming change for sensor:");
      Serial.print(message.sensor);
      Serial.print(", New status: ");
