@@ -28,12 +28,13 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ80
 
 #define MY_IS_RFM69HW
 
-
+//Enable OTA feature
 #define MY_OTA_FIRMWARE_FEATURE
 #define MY_OTA_FLASH_JDECID 0x2020
 
-//#define MY_SIGNING_ATSHA204
-//#define  MY_SIGNING_REQUEST_SIGNATURES
+//Enable Crypto Authentication to secure the node
+#define MY_SIGNING_ATSHA204
+#define  MY_SIGNING_REQUEST_SIGNATURES
 
 #include <MySensors.h>
 #include <SimpleTimer.h>
@@ -77,7 +78,9 @@ void amps()
   char temp_txt[10];
   int temp_rfm = (int)_radio.readTemperature(0);
 
+  //It is linear regression for amperes against onboard ACS712 readings
   ACS712amps  = 0.05856*inputStats.sigma() - 0.2126;
+  //convert it to a string
   dtostrf(ACS712amps,0,2,amps_txt);   
   
   if (abs( (ACS712amps -  ACS712AmpsPrevoiusReadings)) > 0.1){
@@ -96,6 +99,7 @@ void amps()
 }
 
 void before() {
+    // watchdog sets to 8 secs
     wdt_enable(WDTO_8S);     //wdt_disable();
 
     //RFM69 reset pin connected to digital pin 9
