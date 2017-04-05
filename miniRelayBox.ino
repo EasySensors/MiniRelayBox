@@ -1,8 +1,20 @@
 // Enable debug prints to serial monitor
 #define MY_DEBUG
 
-#define MY_NODE_ID 100
-//0xF0
+#define MY_NODE_ID 0xF5  //  0xF0
+
+// Enable and select radio type attached
+#define MY_RADIO_RFM69
+#define MY_RFM69_FREQUENCY   RF69_433MHZ
+#define MY_IS_RFM69HW
+
+//Enable OTA feature
+#define MY_OTA_FIRMWARE_FEATURE
+#define MY_OTA_FLASH_JDECID 0x2020
+
+//Enable Crypto Authentication to secure the node
+#define MY_SIGNING_ATSHA204
+#define  MY_SIGNING_REQUEST_SIGNATURES
 
 //#define AdafruitNeoPixel 
 
@@ -21,21 +33,6 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ80
   #include <avr/power.h>
 #endif
 
-
-// Enable and select radio type attached
-#define MY_RADIO_RFM69
-#define MY_RFM69_FREQUENCY   RF69_433MHZ
-
-#define MY_IS_RFM69HW
-
-//Enable OTA feature
-#define MY_OTA_FIRMWARE_FEATURE
-#define MY_OTA_FLASH_JDECID 0x2020
-
-//Enable Crypto Authentication to secure the node
-#define MY_SIGNING_ATSHA204
-#define  MY_SIGNING_REQUEST_SIGNATURES
-
 #include <MySensors.h>
 #include <SimpleTimer.h>
 #include <stdlib.h>
@@ -44,7 +41,6 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ80
 #include <Filters.h> 
 float testFrequency = 50;                     // test signal frequency (Hz)
 float windowLength = 20.0/testFrequency;     // how long to average the signal, for statistist
-
 
 #define RELAY_pin 7 // Digital pin connected to relay
 
@@ -65,13 +61,11 @@ MyMessage msg_current(Current_sensor, V_CURRENT);
 MyMessage msg_temp(TEMP_sensor, V_TEMP);
 
 RunningStatistics inputStats;                 // create statistics to look at the raw test signal
-SimpleTimer timer;
 
 static uint8_t  temp_rfmPrevoiusReadings = 0;
 static float ACS712AmpsPrevoiusReadings = 0;
-unsigned long wdiDelay2  = 0;
 
-void amps()
+void reportCurrent()
 {
   float ACS712amps;
   char amps_txt[20];
@@ -120,7 +114,6 @@ void before() {
     #endif
     
     // Call void amps() to update current and temperature readings.
-    timer.setInterval(6000, amps);
     inputStats.setWindowSecs( windowLength );
     // Then set relay pins in output mode
     pinMode(RELAY_pin, OUTPUT);  
@@ -128,10 +121,8 @@ void before() {
     digitalWrite(RELAY_pin, loadState(RELAY_sensor)?RELAY_ON:RELAY_OFF);
 
     #ifdef  AdafruitNeoPixel
-      noInterrupts();
       pixels.setPixelColor(0,loadState(RELAY_sensor)?pixels.Color(255,0,0):pixels.Color(0,255,0));
       pixels.show();
-      interrupts(); 
     #endif
     //_radio.readAllRegs();
 }
@@ -140,8 +131,7 @@ void setup() {
   
 }
 
-void presentation() 
-{  
+void presentation() {  
   // Send the sketch version information to the gateway and Controller
   // char  SketchInfo[] = {"Relay node " && MY_NODE_ID};
   sendSketchInfo("Mini Relay Box node","2.0");
@@ -152,14 +142,18 @@ void presentation()
   present(TEMP_sensor, S_TEMP); // RFM 69 Radio have temp sensor. keep this if you like temp reported to a controller
 }
 
-unsigned long wdiDelay  = 0;
 
-void loop()
-{
+void loop(){
   wdt_reset();
   //Serial.print("RSSI "); Serial.println(_radio.readRSSI());
   inputStats.input(analogRead(A1));  // log to Stats function for ampers from A1 analog input
-  timer.run();      
+  static unsigned long lastCurrentSensorMillis = 0, currentSensorInterval = 5000;
+  // Check if we reach the max millis of 4,294,967,295
+  millis() < lastCurrentSensorMillis ? lastCurrentSensorMillis = 0:0;
+  if (millis() >  (lastCurrentSensorMillis + currentSensorInterval)){
+    lastCurrentSensorMillis = millis();
+    reportCurrent();    
+  }
 }
 
 void receive(const MyMessage &message) {
