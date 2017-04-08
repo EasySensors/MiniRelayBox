@@ -1,7 +1,8 @@
 // Enable debug prints to serial monitor
 #define MY_DEBUG
 
-#define MY_NODE_ID 0xF5  //  0xF0
+// Comment it out for Auto Node ID #
+#define MY_NODE_ID 0xF2  //  0xF0 
 
 // Enable and select radio type attached
 #define MY_RADIO_RFM69
@@ -16,15 +17,17 @@
 #define MY_SIGNING_ATSHA204
 #define  MY_SIGNING_REQUEST_SIGNATURES
 
+// Enable  onbaord Pixel LED SK6812mini 
 //#define AdafruitNeoPixel 
 
-#ifdef  AdafruitNeoPixel
 #include <Adafruit_NeoPixel.h>
 // Which pin on the Arduino is connected to the NeoPixels?
 #define PIN 6
 // How many NeoPixels are attached to the Arduino?
 #define NUMPIXELS   1
 #define NEO_PTYPE  NEO_GRB 
+
+#ifdef  AdafruitNeoPixel
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 #endif
 
@@ -53,7 +56,7 @@ float windowLength = 20.0/testFrequency;     // how long to average the signal, 
 
 
 //#define SPIFLASH_BLOCKERASE_32K   0x52
-#define SPIFLASH_BLOCKERASE_32K   0xD8 // We redefine erase block and CHIPERASE commands here. so please keep these two lines AFTER #include <MySensors.h>
+#define SPIFLASH_BLOCKERASE_32K   0xD8 // Redefine erase block and CHIPERASE commands here. so please keep these two lines AFTER #include <MySensors.h>
 #define SPIFLASH_CHIPERASE        0x60
 
 MyMessage msg(RELAY_sensor, V_LIGHT);
@@ -77,7 +80,7 @@ void reportCurrent()
   //convert it to a string
   dtostrf(ACS712amps,0,2,amps_txt);   
   
-  if (abs( (ACS712amps -  ACS712AmpsPrevoiusReadings)) > 0.1){
+  if (abs( (ACS712amps -  ACS712AmpsPrevoiusReadings)) > 0.1 && ACS712amps > 0){
     //Serial.print( "\tamps_txt: " ); Serial.println( amps_txt );
     //Serial.print( "\tACS712AmpsPrevoiusReadings: " ); Serial.println( ACS712AmpsPrevoiusReadings ); 
     //Serial.print( "\inputStats.sigma(): " ); Serial.println( inputStats.sigma() ); // sigma variation values of ACS712 value debug print
@@ -85,7 +88,7 @@ void reportCurrent()
     send(msg_current.set(amps_txt), true); // Send new state and request ack back
     wait(30);
     }
-  if (abs(temp_rfmPrevoiusReadings - temp_rfm)>= 1){
+  if (abs(temp_rfmPrevoiusReadings - temp_rfm)>= 3){
     temp_rfmPrevoiusReadings = temp_rfm;
     //Serial.print( "\tRFM temp: " ); Serial.println( temp_rfm );
     send(msg_temp.set(temp_rfm), true); // Send RFM module temp sensor readings
@@ -124,7 +127,7 @@ void before() {
       pixels.setPixelColor(0,loadState(RELAY_sensor)?pixels.Color(255,0,0):pixels.Color(0,255,0));
       pixels.show();
     #endif
-    //_radio.readAllRegs();
+    _radio.readAllRegs();
 }
 
 void setup() {
