@@ -30,8 +30,8 @@ If you are familiar with Arduino boards, the MiniRelayBox Node is Arduino pro Mi
 ![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/r4.jpg?raw=true)
 
 Package Content:
-•	The MiniRelayBox board 1 pcs
-•	Flame retardant ABS plastic Enclosure 1 pcs
+-	The MiniRelayBox board 1 pcs
+-	Flame retardant ABS plastic Enclosure 1 pcs
 
 
   
