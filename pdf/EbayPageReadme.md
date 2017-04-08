@@ -31,7 +31,4 @@ If you are familiar with Arduino boards, the MiniRelayBox Node is Arduino pro Mi
 
 Package Content:
 -	The MiniRelayBox board 1 pcs
--	Flame retardant ABS plastic Enclosure 1 pcs
-
-
-  
+-	Flame retardant ABS plastic enclosure 1 pcs
