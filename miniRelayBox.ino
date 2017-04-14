@@ -1,8 +1,31 @@
+/**
+ * The MySensors Arduino library handles the wireless radio link and protocol
+ * between your home built sensors/actuators and HA controller of choice.
+ * The sensors forms a self healing radio network with optional repeaters. Each
+ * repeater and gateway builds a routing tables in EEPROM which keeps track of the
+ * network topology allowing messages to be routed to nodes.
+ *
+ * Created by Henrik Ekblad <henrik.ekblad@mysensors.org>
+ * Copyright (C) 2013-2015 Sensnology AB
+ * Full contributor list: https://github.com/mysensors/Arduino/graphs/contributors
+ *
+ * Documentation: http://www.mysensors.org
+ * Support Forum: http://forum.mysensors.org
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * version 2 as published by the Free Software Foundation.
+ *
+**/
+
 // Enable debug prints to serial monitor
 #define MY_DEBUG
 
+// Enable  onbaord Pixel LED SK6812mini 
+#define AdafruitNeoPixel 
+
 // Comment it out for Auto Node ID #
-#define MY_NODE_ID 0xF2  //  0xF0 
+#define MY_NODE_ID 0xAA  
 
 // Enable and select radio type attached
 #define MY_RADIO_RFM69
@@ -14,11 +37,9 @@
 #define MY_OTA_FLASH_JDECID 0x2020
 
 //Enable Crypto Authentication to secure the node
-#define MY_SIGNING_ATSHA204
-#define  MY_SIGNING_REQUEST_SIGNATURES
+//#define MY_SIGNING_ATSHA204
+//#define  MY_SIGNING_REQUEST_SIGNATURES
 
-// Enable  onbaord Pixel LED SK6812mini 
-//#define AdafruitNeoPixel 
 
 #include <Adafruit_NeoPixel.h>
 // Which pin on the Arduino is connected to the NeoPixels?
@@ -81,9 +102,6 @@ void reportCurrent()
   dtostrf(ACS712amps,0,2,amps_txt);   
   
   if (abs( (ACS712amps -  ACS712AmpsPrevoiusReadings)) > 0.1 && ACS712amps > 0){
-    //Serial.print( "\tamps_txt: " ); Serial.println( amps_txt );
-    //Serial.print( "\tACS712AmpsPrevoiusReadings: " ); Serial.println( ACS712AmpsPrevoiusReadings ); 
-    //Serial.print( "\inputStats.sigma(): " ); Serial.println( inputStats.sigma() ); // sigma variation values of ACS712 value debug print
     ACS712AmpsPrevoiusReadings = ACS712amps;
     send(msg_current.set(amps_txt), true); // Send new state and request ack back
     wait(30);
@@ -168,7 +186,7 @@ void receive(const MyMessage &message) {
      saveState(message.sensor, message.getBool()?RELAY_ON:RELAY_OFF);
      #ifdef  AdafruitNeoPixel
       wait(100);
-      // Blink Blues light to see radio communication with the gateway is 
+      // Blink blue light to see radio communication with the gateway is 
       pixels.setPixelColor(0,pixels.Color(0,0,255));
       pixels.show();
       wait(100);
