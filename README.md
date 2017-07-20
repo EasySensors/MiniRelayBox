@@ -79,6 +79,7 @@ Connect the Relay to FTDI USB adaptor, Select Pro Mini 8MHz board in Arduino IDE
 The board is created by  [Koresh](https://www.openhardware.io/user/143/projects/Koresh)
 
 ![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/r5.jpg?raw=true)
+![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/label470.jpg?raw=true)
 ![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/r1.jpg?raw=true)
 ![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/r2.jpg?raw=true)
 ![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/r3.jpg?raw=true)
