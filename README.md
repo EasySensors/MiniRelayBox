@@ -1,8 +1,6 @@
-
-
 ![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/miniRelayBox5.jpg?raw=true)
+![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/label300.JPG?raw=true)
 ![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/miniRelayBox2.jpg?raw=true)
-![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/miniRelayBox3.jpg?raw=true)
 ![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/miniRelayBox4.jpg?raw=true)
 
 
