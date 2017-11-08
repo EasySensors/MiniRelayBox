@@ -51,10 +51,10 @@ ANT |	RFM69 antenna
 
 **programming FTDI adapter connection**
 
-![enter image description here](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/FTDIvcc3.jpg?raw=true)
+![FTDI Power](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/FTDIvcc3.jpg?raw=true)
 
 
-Both 3.3V and 5V power options can be used.
+3.3V power option can be used.
 
 
 
