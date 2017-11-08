@@ -54,7 +54,7 @@ ANT |	RFM69 antenna
 ![FTDI Power](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/FTDIvcc3.jpg?raw=true)
 
 
-3.3V power option can be used.
+3.3V power option should to be used.
 
 
 
