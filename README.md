@@ -49,6 +49,15 @@ ANT |	RFM69 antenna
 
 
 
+**programming FTDI adapter connection**
+
+![enter image description here](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/FTDIvcc3.jpg?raw=true)
+
+
+Both 3.3V and 5V power options can be used.
+
+
+
 How to use it as home automation (IOT) node Relay
 ------------------------------------------------------
 
