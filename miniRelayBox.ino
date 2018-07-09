@@ -29,12 +29,24 @@
 
 // Enable and select radio type attached
 #define MY_RADIO_RFM69
-#define MY_RFM69_FREQUENCY   RF69_433MHZ
+
+// if you use MySensors 2.0 use this style 
+//#define MY_RFM69_FREQUENCY   RF69_433MHZ
+//#define MY_RFM69_FREQUENCY   RF69_868MHZ
+//#define MY_RFM69_FREQUENCY   RF69_915MHZ
+
+
+#define MY_RFM69_FREQUENCY   RFM69_433MHZ
+
+
+//#define MY_RFM69_FREQUENCY   RFM69_868MHZ
+
+
 #define MY_IS_RFM69HW
 
 //Enable OTA feature
 #define MY_OTA_FIRMWARE_FEATURE
-#define MY_OTA_FLASH_JDECID 0x2020
+#define MY_OTA_FLASH_JDECID 0 //0x2020
 
 //Enable Crypto Authentication to secure the node
 //#define MY_SIGNING_ATSHA204
@@ -58,7 +70,7 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ80
 #endif
 
 #include <MySensors.h>
-#include <SimpleTimer.h>
+ //#include <SimpleTimer.h>
 #include <stdlib.h>
 
 //--------------------- https://github.com/JonHub/Filters
@@ -117,15 +129,19 @@ void before() {
     // watchdog sets to 8 secs
     wdt_enable(WDTO_8S);     //wdt_disable();
 
-    //RFM69 reset pin connected to digital pin 9
-    pinMode(9, OUTPUT);  
-    digitalWrite(9,LOW);
-    
-    //in case watchdog resets node - we do RFM69 reset here since VDD (power) is not disconnected while watchdog resets the node. Just in case!
-    digitalWrite(9,HIGH);
-    delay(10);
-    digitalWrite(9,LOW);
-    delay(10);
+    // in case watchdog resets node - we do RFM69 reset here since VDD (power) is not disconnected while watchdog resets the node. Just in case!
+      /*  RFM reset pin is 9
+       *  A manual reset of the RFM69HCW\CW is possible even for applications in which VDD cannot be physically disconnected.
+       *  Pin RESET should be pulled high for a hundred microseconds, and then released. The user should then wait for 5 ms
+       *  before using the module.
+       */
+      pinMode(9, OUTPUT);
+      //reset RFM module
+      digitalWrite(9, 1);
+      delay(1);
+      // set Pin 9 to high impedance
+      pinMode(9, INPUT);
+      delay(10);
 
     #ifdef  AdafruitNeoPixel
       pixels.begin(); // This initializes the NeoPixel library.
@@ -145,7 +161,7 @@ void before() {
       pixels.setPixelColor(0,loadState(RELAY_sensor)?pixels.Color(255,0,0):pixels.Color(0,255,0));
       pixels.show();
     #endif
-    _radio.readAllRegs();
+    //_radio.readAllRegs();
 }
 
 void setup() {
