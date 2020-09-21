@@ -139,6 +139,7 @@ void before() {
       //reset RFM module
       digitalWrite(9, 1);
       delay(1);
+      digitalWrite(9, 0);
       // set Pin 9 to high impedance
       pinMode(9, INPUT);
       delay(10);
